@@ -1,8 +1,18 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
 // import { Container } from './styles';
 
-export default function Home() {
-  return <View />;
+export default class Home extends Component {
+  state = {
+    products: [],
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Main</Text>
+      </View>
+    );
+  }
 }
