@@ -53,5 +53,4 @@ export const BtnAddCart = styled.View`
 `;
 export const BtnAddCartText = styled.Text`
   color: white;
-  
 `;
