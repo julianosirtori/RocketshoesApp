@@ -19,7 +19,7 @@ const Routes = createAppContainer(
         header: <Header {...navigation} />,
       }),
       cardStyle: {
-        backgroundColor: '#141419',
+        backgroundColor: '#191920',
       },
     }
   )
