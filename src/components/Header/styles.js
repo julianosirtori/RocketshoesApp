@@ -14,7 +14,7 @@ export const Logo = styled.Image`
   height: 24px;
 `;
 
-export const Cart = styled.View`
+export const Cart = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
 `;

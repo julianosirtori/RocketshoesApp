@@ -8,7 +8,7 @@ export default function Header({ navigation, cartSize }) {
   return (
     <Container>
       <Logo source={LogoImage} />
-      <Cart>
+      <Cart onPress={() => navigation.navigate('Cart')}>
         <Icon name="shopping-basket" size={26} color="#ffffff" />
         <SizeCart>
           <SizeCartText>0</SizeCartText>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '../../services/api';
 
@@ -11,10 +10,10 @@ import {
   ImageProduto,
   TextDescrition,
   TextPrice,
-  ContainerBtnAddCart,
-  CartSize,
-  BtnAddCart,
-  BtnAddCartText,
+  AddButton,
+  ProductAmount,
+  ProductAmountText,
+  AddButtonText,
 } from './styles';
 
 export default class Home extends Component {
@@ -27,6 +26,23 @@ export default class Home extends Component {
     this.setState({ products: response.data });
   }
 
+  renderItem = item => {
+    return (
+      <ProductsItem>
+        <ImageProduto source={{ uri: item.image }} />
+        <TextDescrition>{item.title}</TextDescrition>
+        <TextPrice>R$ {item.price}</TextPrice>
+        <AddButton onPress={() => this.handleAddProduct(item.id)}>
+          <ProductAmount>
+            <Icon name="add-shopping-cart" color="#FFF" size={20} />
+            <ProductAmountText>{0}</ProductAmountText>
+          </ProductAmount>
+          <AddButtonText>ADICIONAR</AddButtonText>
+        </AddButton>
+      </ProductsItem>
+    );
+  };
+
   render() {
     const { products } = this.state;
     return (
@@ -34,21 +50,7 @@ export default class Home extends Component {
         <ProductsList
           horizontal
           data={products}
-          renderItem={({ item }) => (
-            <ProductsItem>
-              <ImageProduto source={{ uri: item.image }} />
-              <TextDescrition>{item.title}</TextDescrition>
-              <TextPrice>R$ {item.price}</TextPrice>
-              <TouchableHighlight>
-                <ContainerBtnAddCart>
-                  <CartSize />
-                  <BtnAddCart>
-                    <BtnAddCartText>ADICIONAR</BtnAddCartText>
-                  </BtnAddCart>
-                </ContainerBtnAddCart>
-              </TouchableHighlight>
-            </ProductsItem>
-          )}
+          renderItem={({ item }) => this.renderItem(item)}
         />
       </Container>
     );
